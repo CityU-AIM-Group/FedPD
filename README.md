@@ -2,5 +2,5 @@
 
 **FedPD is the first work of federated learning for open-set recognition.**
 
-![](introduction_2.pdf)
+![](Introduction_2.pdf)
 
