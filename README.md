@@ -1,2 +1,6 @@
-# FedPD
-[ICCV' 23] FedPD: Federated Open Set Recognition with Parameter Disentanglement
+## FedPD: Federated Open Set Recognition with Parameter Disentanglement
+
+**FedPD is the first work of federated learning for open-set recognition.**
+
+![](frame.png)
+
