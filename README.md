@@ -2,7 +2,7 @@
 
 **FedPD is the first work of federated learning for open-set recognition.**
 
-![](Introduction_2.pdf)
+![](frame.pdf)
 
 ### Dataset & Pretrained Modeel
 **Benchmark(Digits)**
@@ -11,3 +11,7 @@
     cd ./data
     unzip digit_dataset.zip
     ```
+
+<!-- Robust/Efficient Model Personalization in Federated Medical Image Segmentation via Domain-Aware Representation Learning
+
+Heterogeneity-aware Model Personalization in Federated Medical Image Segmentation via Domain-Aware Masked Autoenco -->
