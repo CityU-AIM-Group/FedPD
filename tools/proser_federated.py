@@ -1,6 +1,7 @@
 import argparse
 from distutils.log import Log
 import os
+import _init_paths
 import time
 import os.path as osp
 from copy import deepcopy
@@ -68,29 +69,29 @@ def prepare_data(options):
         ])
 
     # MNIST
-    mnist_trainset     = data_relabel.DigitsDataset(data_path="/home/cyang/FedOSR/data/MNIST", channels=1, percent=options['percent'], setname='train',  transform=transform_mnist, seed=options['seed'], known_class=options['known_class'])
-    mnist_testset_close      = data_relabel.DigitsDataset(data_path="/home/cyang/FedOSR/data/MNIST", channels=1, percent=options['percent'], setname='testclose', transform=transform_mnist, seed=options['seed'], known_class=options['known_class'])
-    mnist_testset_open      = data_relabel.DigitsDataset(data_path="/home/cyang/FedOSR/data/MNIST", channels=1, percent=options['percent'], setname='testopen', transform=transform_mnist, seed=options['seed'], known_class=options['known_class'])
+    mnist_trainset     = data_relabel.DigitsDataset(data_path="/data/cyang/Data/Digits/MNIST", channels=1, percent=options['percent'], setname='train',  transform=transform_mnist, seed=options['seed'], known_class=options['known_class'])
+    mnist_testset_close      = data_relabel.DigitsDataset(data_path="/data/cyang/Data/Digits/MNIST", channels=1, percent=options['percent'], setname='testclose', transform=transform_mnist, seed=options['seed'], known_class=options['known_class'])
+    mnist_testset_open      = data_relabel.DigitsDataset(data_path="/data/cyang/Data/Digits/MNIST", channels=1, percent=options['percent'], setname='testopen', transform=transform_mnist, seed=options['seed'], known_class=options['known_class'])
     
     # SVHN
-    svhn_trainset      = data_relabel.DigitsDataset(data_path='/home/cyang/FedOSR/data/SVHN', channels=3, percent=options['percent'],  setname='train',  transform=transform_svhn, seed=options['seed'], known_class=options['known_class'])
-    svhn_testset_close       = data_relabel.DigitsDataset(data_path='/home/cyang/FedOSR/data/SVHN', channels=3, percent=options['percent'],  setname='testclose', transform=transform_svhn, seed=options['seed'], known_class=options['known_class'])
-    svhn_testset_open       = data_relabel.DigitsDataset(data_path='/home/cyang/FedOSR/data/SVHN', channels=3, percent=options['percent'],  setname='testopen', transform=transform_svhn, seed=options['seed'], known_class=options['known_class'])    
+    svhn_trainset      = data_relabel.DigitsDataset(data_path='/data/cyang/Data/Digits/SVHN', channels=3, percent=options['percent'],  setname='train',  transform=transform_svhn, seed=options['seed'], known_class=options['known_class'])
+    svhn_testset_close       = data_relabel.DigitsDataset(data_path='/data/cyang/Data/Digits/SVHN', channels=3, percent=options['percent'],  setname='testclose', transform=transform_svhn, seed=options['seed'], known_class=options['known_class'])
+    svhn_testset_open       = data_relabel.DigitsDataset(data_path='/data/cyang/Data/Digits/SVHN', channels=3, percent=options['percent'],  setname='testopen', transform=transform_svhn, seed=options['seed'], known_class=options['known_class'])    
     
     # USPS
-    usps_trainset      = data_relabel.DigitsDataset(data_path='/home/cyang/FedOSR/data/USPS', channels=1, percent=options['percent'],  setname='train',  transform=transform_usps, seed=options['seed'], known_class=options['known_class'])
-    usps_testset_close       = data_relabel.DigitsDataset(data_path='/home/cyang/FedOSR/data/USPS', channels=1, percent=options['percent'],  setname='testclose', transform=transform_usps, seed=options['seed'], known_class=options['known_class'])
-    usps_testset_open       = data_relabel.DigitsDataset(data_path='/home/cyang/FedOSR/data/USPS', channels=1, percent=options['percent'],  setname='testopen', transform=transform_usps, seed=options['seed'], known_class=options['known_class'])
+    usps_trainset      = data_relabel.DigitsDataset(data_path='/data/cyang/Data/Digits/USPS', channels=1, percent=options['percent'],  setname='train',  transform=transform_usps, seed=options['seed'], known_class=options['known_class'])
+    usps_testset_close       = data_relabel.DigitsDataset(data_path='/data/cyang/Data/Digits/USPS', channels=1, percent=options['percent'],  setname='testclose', transform=transform_usps, seed=options['seed'], known_class=options['known_class'])
+    usps_testset_open       = data_relabel.DigitsDataset(data_path='/data/cyang/Data/Digits/USPS', channels=1, percent=options['percent'],  setname='testopen', transform=transform_usps, seed=options['seed'], known_class=options['known_class'])
     
     # Synth Digits
-    synth_trainset     = data_relabel.DigitsDataset(data_path='/home/cyang/FedOSR/data/SynthDigits/', channels=3, percent=options['percent'],  setname='train',  transform=transform_synth, seed=options['seed'], known_class=options['known_class'])
-    synth_testset_close      = data_relabel.DigitsDataset(data_path='/home/cyang/FedOSR/data/SynthDigits/', channels=3, percent=options['percent'],  setname='testclose', transform=transform_synth, seed=options['seed'], known_class=options['known_class'])
-    synth_testset_open      = data_relabel.DigitsDataset(data_path='/home/cyang/FedOSR/data/SynthDigits/', channels=3, percent=options['percent'],  setname='testopen', transform=transform_synth, seed=options['seed'], known_class=options['known_class'])
+    synth_trainset     = data_relabel.DigitsDataset(data_path='/data/cyang/Data/Digits/SynthDigits/', channels=3, percent=options['percent'],  setname='train',  transform=transform_synth, seed=options['seed'], known_class=options['known_class'])
+    synth_testset_close      = data_relabel.DigitsDataset(data_path='/data/cyang/Data/Digits/SynthDigits/', channels=3, percent=options['percent'],  setname='testclose', transform=transform_synth, seed=options['seed'], known_class=options['known_class'])
+    synth_testset_open      = data_relabel.DigitsDataset(data_path='/data/cyang/Data/Digits/SynthDigits/', channels=3, percent=options['percent'],  setname='testopen', transform=transform_synth, seed=options['seed'], known_class=options['known_class'])
 
     # MNIST-M
-    mnistm_trainset     = data_relabel.DigitsDataset(data_path='/home/cyang/FedOSR/data/MNIST_M/', channels=3, percent=options['percent'],  setname='train',  transform=transform_mnistm, seed=options['seed'], known_class=options['known_class'])
-    mnistm_testset_close      = data_relabel.DigitsDataset(data_path='/home/cyang/FedOSR/data/MNIST_M/', channels=3, percent=options['percent'],  setname='testclose', transform=transform_mnistm, seed=options['seed'], known_class=options['known_class'])
-    mnistm_testset_open      = data_relabel.DigitsDataset(data_path='/home/cyang/FedOSR/data/MNIST_M/', channels=3, percent=options['percent'],  setname='testopen', transform=transform_mnistm, seed=options['seed'], known_class=options['known_class'])
+    mnistm_trainset     = data_relabel.DigitsDataset(data_path='/data/cyang/Data/Digits/MNIST_M/', channels=3, percent=options['percent'],  setname='train',  transform=transform_mnistm, seed=options['seed'], known_class=options['known_class'])
+    mnistm_testset_close      = data_relabel.DigitsDataset(data_path='/data/cyang/Data/Digits/MNIST_M/', channels=3, percent=options['percent'],  setname='testclose', transform=transform_mnistm, seed=options['seed'], known_class=options['known_class'])
+    mnistm_testset_open      = data_relabel.DigitsDataset(data_path='/data/cyang/Data/Digits/MNIST_M/', channels=3, percent=options['percent'],  setname='testopen', transform=transform_mnistm, seed=options['seed'], known_class=options['known_class'])
 
     print('Known class list: {}'.format(mnist_trainset.known_class_list))
     print('Unknown class list: {}'.format(mnist_trainset.unknown_class_list))
@@ -500,7 +501,7 @@ if __name__=="__main__":
 
     log = args.log
     if log:
-        log_path = os.path.join('/home/cyang/FedPD/experiments', args.model_type + '_' + args.dataset)
+        log_path = os.path.join('/data/cyang/Code/Experiment/fedpd_exp', args.model_type + '_' + args.dataset)
         if not os.path.exists(log_path):
             os.makedirs(log_path)
             os.makedirs(os.path.join(log_path, 'models'))

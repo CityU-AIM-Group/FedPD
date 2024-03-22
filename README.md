@@ -20,6 +20,13 @@ Please use the following bib entry to cite the paper if you are using resources 
 <!-- ![teaser](./imgs/teaser.jpg) -->
 <img src="./figs/frame.png" width=90% height=80%>
 
+### Setup
+
+```
+cd data
+pip install -e .
+```
+
 ### Dataset & Pretrained Modeel
 **Benchmark(Digits)**
 - Please download our pre-processed datasets [here](https://mycuhk-my.sharepoint.com/:u:/g/personal/1155149226_link_cuhk_edu_hk/EV1YgHfFC4RKjw06NL4JMdgBMU21CegM12SpXrSmGjt3XA?e=XK2rFs), put under `data/` directory and perform following commands:
