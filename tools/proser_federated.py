@@ -1,5 +1,3 @@
-
-
 import argparse
 from distutils.log import Log
 import os
