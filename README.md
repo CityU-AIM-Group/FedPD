@@ -28,5 +28,11 @@ Please use the following bib entry to cite the paper if you are using resources 
     unzip digit_dataset.zip
     ```
 ### Trainging
+**Baseline**
+Our local training is based on popolar open-set recognition framework [Proser](https://github.com/zhoudw-zdw/CVPR21-Proser). A simple baseline for federated open-set recognition is provided:
+```
+python tools/proser_federated.py
+```
+
 
 ### Testing
