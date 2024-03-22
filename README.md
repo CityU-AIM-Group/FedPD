@@ -27,7 +27,6 @@ Please use the following bib entry to cite the paper if you are using resources 
     cd ./data
     unzip digit_dataset.zip
     ```
+### Trainging
 
-<!-- Robust/Efficient Model Personalization in Federated Medical Image Segmentation via Domain-Aware Representation Learning
-
-Heterogeneity-aware Model Personalization in Federated Medical Image Segmentation via Domain-Aware Masked Autoenco -->
+### Testing
