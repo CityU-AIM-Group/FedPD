@@ -1,2 +1,6 @@
 numpy==1.23.0
 mmcv==1.5.0
+torch==2.2.1
+torchvison==0.17.1
+scikit-learn==1.4.1
+scipy==1.12.0

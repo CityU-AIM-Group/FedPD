@@ -2,14 +2,9 @@ import sys, os
 base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(base_path)
 
-import os.path as osp
-import PIL
 from PIL import Image
 import numpy as np
 from torch.utils.data import Dataset
-from torchvision import transforms
-import scipy.io as sio
-import torch
 import copy
 
 class DigitsDataset(Dataset):

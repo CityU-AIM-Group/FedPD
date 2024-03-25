@@ -9,6 +9,7 @@ import torch
 import torch.nn as nn
 import torch.nn.init as init
 import logging
+import pprint
 from mmcv.utils import get_logger
 
 def get_root_logger(log_file=None, log_level=logging.INFO):
@@ -200,3 +201,7 @@ def ensure_path(path, remove=False):
                 os.mkdir(path)
     else:
         os.mkdir(path)
+
+_utils_pp = pprint.PrettyPrinter()
+def pprint(x):
+    _utils_pp.pprint(x)

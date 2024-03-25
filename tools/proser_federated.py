@@ -1,5 +1,4 @@
 import argparse
-from distutils.log import Log
 import os
 import _init_paths
 import time
@@ -8,19 +7,14 @@ from copy import deepcopy
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
-import torch.backends.cudnn as cudnn
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-import torchvision
 import torchvision.transforms as transforms
 from sklearn.metrics import roc_auc_score
-from torch.optim.lr_scheduler import MultiStepLR
 from models import *
 from models.digit import DigitModel
-from utils import ensure_path, progress_bar, Logger, get_root_logger
-from models.utils import pprint, set_gpu, ensure_path, Averager, Timer, count_acc, compute_confidence_interval, one_hot,Identity
-from torch.distributions import Categorical
+from utils import ensure_path, get_root_logger, pprint
 import copy
 import random
 from data import data_relabel
@@ -161,7 +155,7 @@ def train(args, trainloader, net, optimizer, criterion):
     correct = 0
     total = 0
     for batch_idx, (inputs, targets) in enumerate(trainloader):
-        inputs, targets = inputs.to(device), targets.to(device)
+        inputs, targets = inputs.cuda(), targets.cuda()
         optimizer.zero_grad()
         outputs = net(inputs)
         loss = criterion(outputs, targets)
@@ -184,7 +178,7 @@ def traindummy(args, trainloader, net, optimizer, criterion):
     total = 0
     alpha=args.alpha
     for batch_idx, (inputs, targets) in enumerate(trainloader):
-        inputs, targets = inputs.to(device), targets.to(device)
+        inputs, targets = inputs.cuda(), targets.cuda()
         optimizer.zero_grad()
 
         totallenth=len(inputs)
@@ -250,7 +244,7 @@ def valdummy(net, closeset, openset, closeloader, openloader):
     openlogits=torch.zeros((len(openset),args.known_class+1)).cuda()
     with torch.no_grad():
         for batch_idx, (inputs, targets) in enumerate(closeloader):
-            inputs, targets = inputs.to(device), targets.to(device)
+            inputs, targets = inputs.cuda(), targets.cuda()
             batchnum=len(targets)
             logits=net(inputs)
             _, predicted = logits.max(1)
@@ -263,7 +257,7 @@ def valdummy(net, closeset, openset, closeloader, openloader):
             closelogits[batch_idx*batchnum:batch_idx*batchnum+batchnum,:]=totallogits
         acc = 100. * correct / total
         for batch_idx, (inputs, targets) in enumerate(openloader):
-            inputs, targets = inputs.to(device), targets.to(device)
+            inputs, targets = inputs.cuda(), targets.cuda()
             batchnum=len(targets)
             logits=net(inputs)
             dummylogit=dummypredict(net,inputs)
@@ -456,12 +450,11 @@ if __name__=="__main__":
     parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
     parser.add_argument('--lr', default=0.1, type=float, help='learning rate')
     parser.add_argument('--lr_open', default=0.1, type=float, help='learning rate')
-    parser.add_argument('--com_iter', default=2,type=int,help='communication iters')
+    parser.add_argument('--com_iter', default=1,type=int,help='communication iters')
     parser.add_argument('--resume', '-r', action='store_true', help='resume from checkpoint')
     parser.add_argument('--model_type', default='Proser', type=str, help='Recognition Method')
     parser.add_argument('--backbone', default='DigitModel', type=str, help='Backbone type.')
     parser.add_argument('--dataset', default='cifar10_relabel',type=str,help='dataset configuration')
-    parser.add_argument('--gpu', default='0',type=str,help='use gpu')
     parser.add_argument('--percent', type = float, default= 0.1, help ='percentage of dataset to train')
     parser.add_argument('--mode', default='fedavg',type=str,help='federated mode')
     parser.add_argument('--known_class', default=6,type=int,help='number of known class')
@@ -473,17 +466,16 @@ if __name__=="__main__":
     parser.add_argument('--dummynumber', default=1,type=int,help='number of dummy label.')
     parser.add_argument('--shmode',action='store_true')
     parser.add_argument('--log', action='store_true', help ='whether to make a log')
-    parser.add_argument('--pretrain_epoch', default=10, type=int, help='resnet pretrain stage')
-    parser.add_argument('--max_epoch', default=60, type=int, help='total epoches')
+    parser.add_argument('--pretrain_epoch', default=50, type=int, help='resnet pretrain stage')
+    parser.add_argument('--max_epoch', default=100, type=int, help='total epoches')
 
     args = parser.parse_args()
     options = vars(args)
 
+    pprint(vars(args))
+    # os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
     seed_everything(args.seed)
 
-    pprint(vars(args))
-    os.environ['CUDA_VISIBLE_DEVICES'] =args.gpu
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
     best_acc = 0  
     start_epoch = 0  
     
@@ -513,14 +505,13 @@ if __name__=="__main__":
         logger.info('dataset: {}'.format(args.dataset))
         logger.info('backbone: {}'.format(args.backbone))
         logger.info('com_iter: {}'.format(str(args.com_iter)))
-        logger.info('gpu: {}'.format(str(args.gpu)))
         logger.info('lr: {}'.format(str(args.lr)))
         logger.info('pretrain epoch: {}'.format(str(args.pretrain_epoch)))
         logger.info('known class: {}'.format(knownlist))
         logger.info('unknown class: {}'.format(unknownlist))
     
-    save_path1 = osp.join('results','D{}-M{}-B{}'.format(args.dataset,args.model_type, args.backbone,))
-    model_path = osp.join('results','D{}-M{}-B{}'.format(args.dataset,'softmax', args.backbone,))
+    save_path1 = osp.join('/data/cyang/Code/Experiment/fedpd_exp','D{}-M{}-B{}'.format(args.dataset,args.model_type, args.backbone,))
+    model_path = osp.join('/data/cyang/Code/Experiment/fedpd_exp','D{}-M{}-B{}'.format(args.dataset,'softmax', args.backbone,))
     save_path2 = 'LR{}-K{}-U{}-Seed{}'.format(str(args.lr), knownlist,unknownlist,str(args.seed))
     args.save_path = osp.join(save_path1, save_path2)
     ensure_path(save_path1, remove=False)

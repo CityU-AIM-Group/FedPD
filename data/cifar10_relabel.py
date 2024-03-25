@@ -1,6 +1,3 @@
-import os.path as osp
-import PIL
-from PIL import Image
 import numpy as np
 from torch.utils.data import Dataset
 from torchvision import transforms

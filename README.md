@@ -39,7 +39,7 @@ pip install -e .
 
 Our local training is based on popolar open-set recognition framework [Proser](https://github.com/zhoudw-zdw/CVPR21-Proser). A simple baseline for federated open-set recognition is provided:
 ```
-python tools/proser_federated.py
+python tools/proser_federated.py --log 
 ```
 
 
