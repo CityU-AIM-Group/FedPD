@@ -18,7 +18,7 @@ Please use the following bib entry to cite the paper if you are using resources 
 ```
 
 <!-- ![teaser](./imgs/teaser.jpg) -->
-<img src="./figs/frame.png" width=90% height=80%>
+<img src="./figs/framework.png" width=90% height=80%>
 
 ### Setup
 

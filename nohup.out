@@ -31,8 +31,24 @@ nohup: ignoring input
 2024-03-25 11:21:56,643 - FedPD - INFO - SVHN    | Acc: 16.814 | Auc: 52.329
 2024-03-25 11:21:56,974 - FedPD - INFO - USPS    | Acc: 33.192 | Auc: 53.047
 2024-03-25 11:22:11,986 - FedPD - INFO - Synth   | Acc: 19.445 | Auc: 50.920
-2024-03-25 11:22:06,184 - FedPD - INFO - MNIST-M | Acc: 19.246 | Auc: 55.104
-2024-03-25 11:22:06,184 - FedPD - INFO - ==> Epoch 2/100
-2024-03-25 11:22:08,630 - FedPD - INFO - MNIST    Loss: 0.608 | Acc: 53.617 | Auc: 56.362
-2024-03-25 11:22:11,822 - FedPD - INFO - SVHN     Loss: 3.781 | Acc: 22.751 | Auc: 50.035
-2024-03-25 11:22:05,739 - FedPD - INFO - USPS     Loss: 0.323 | Acc: 94.581 | Auc: 77.471
+2024-03-25 11:22:13,847 - FedPD - INFO - MNIST-M | Acc: 19.246 | Auc: 55.104
+2024-03-25 11:22:13,847 - FedPD - INFO - ==> Epoch 2/100
+2024-03-25 11:22:16,317 - FedPD - INFO - MNIST    Loss: 0.608 | Acc: 53.617 | Auc: 56.362
+2024-03-25 11:22:19,556 - FedPD - INFO - SVHN     Loss: 3.781 | Acc: 22.751 | Auc: 50.035
+2024-03-25 11:22:20,116 - FedPD - INFO - USPS     Loss: 0.323 | Acc: 94.581 | Auc: 77.471
+2024-03-25 11:22:35,348 - FedPD - INFO - Synth    Loss: 2.324 | Acc: 34.842 | Auc: 62.217
+2024-03-25 11:22:37,399 - FedPD - INFO - MNIST-M  Loss: 1.326 | Acc: 47.054 | Auc: 51.744
+2024-03-25 11:22:39,691 - FedPD - INFO - MNIST   | Acc: 87.617 | Auc: 63.320
+2024-03-25 11:22:42,740 - FedPD - INFO - SVHN    | Acc: 24.154 | Auc: 53.305
+2024-03-25 11:22:43,071 - FedPD - INFO - USPS    | Acc: 83.912 | Auc: 63.236
+2024-03-25 11:22:58,114 - FedPD - INFO - Synth   | Acc: 46.700 | Auc: 51.092
+2024-03-25 11:22:59,960 - FedPD - INFO - MNIST-M | Acc: 53.246 | Auc: 53.067
+2024-03-25 11:22:59,960 - FedPD - INFO - ==> Epoch 3/100
+2024-03-25 11:23:02,429 - FedPD - INFO - MNIST    Loss: 0.193 | Acc: 81.976 | Auc: 64.302
+2024-03-25 11:23:05,669 - FedPD - INFO - SVHN     Loss: 2.372 | Acc: 35.669 | Auc: 51.815
+2024-03-25 11:23:06,231 - FedPD - INFO - USPS     Loss: 0.208 | Acc: 92.718 | Auc: 63.444
+2024-03-25 11:23:21,528 - FedPD - INFO - Synth    Loss: 1.203 | Acc: 62.870 | Auc: 56.288
+2024-03-25 11:23:23,583 - FedPD - INFO - MNIST-M  Loss: 1.030 | Acc: 70.467 | Auc: 57.700
+2024-03-25 11:23:17,572 - FedPD - INFO - MNIST   | Acc: 91.653 | Auc: 73.809
+2024-03-25 11:23:20,591 - FedPD - INFO - SVHN    | Acc: 32.521 | Auc: 54.994
+2024-03-25 11:23:20,921 - FedPD - INFO - USPS    | Acc: 88.992 | Auc: 67.913
